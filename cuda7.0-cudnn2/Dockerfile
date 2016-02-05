@@ -8,7 +8,7 @@ ADD scipy-site.cfg /tmp/scipy-site.cfg
 
 ADD build_scipy_stack.sh /tmp/build_scipy_stack.sh
 RUN bash /tmp/build_scipy_stack.sh \
-    && rm -f /tmp/*
+    && rm -f /tmp/numpy-ste.cfg /tmp/scipy-site.cfg /tmp/build_scipy_stack.sh
 
 ## Extremely basic test of install
 RUN python2 -c "import matplotlib, scipy, numpy, pandas, sklearn, seaborn, yt, patsy, sympy, IPython, statsmodels"
