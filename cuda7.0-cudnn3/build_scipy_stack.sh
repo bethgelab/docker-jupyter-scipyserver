@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Build OpenBLAS and clean up build dependencies
 set -xe
 
 mkdir /tmp/build
@@ -15,35 +14,42 @@ cp /tmp/scipy-site.cfg scipy/site.cfg
 
 apt-get update
 apt-get build-dep -y python3 python3-numpy python3-scipy python3-matplotlib cython3 python3-h5py
+
 curl https://bootstrap.pypa.io/get-pip.py | python2
+curl https://bootstrap.pypa.io/get-pip.py | python3
 
-PYTHON="python2"
-PIP="pip2"
-
-apt-get -y remove cython 
+apt-get -y remove cython
 # apt-get -y remove numpy
-$PIP install --upgrade cython
 
-# Build NumPy and SciPy from source against OpenBLAS installed
-(cd numpy && $PIP install .)
-(cd scipy && $PIP install .)
-  
-# The rest of the SciPy Stack
-$PIP install pandas scikit-learn
-$PIP install matplotlib
-$PIP install seaborn
-$PIP install h5py
-$PIP install yt
-$PIP install sympy
-$PIP install patsy
-$PIP install ggplot
-$PIP install statsmodels
-$PIP install git+https://github.com/Theano/Theano.git 
-$PIP install git+https://github.com/Lasagne/Lasagne.git
-$PIP install bokeh
+for v in 2 3 do
+  PYTHON="python$(v)"
+  PIP="pip$(v)"
 
-# Install additional developer tools
-$PIP install mock
-$PIP install pytest
-$PIP install 
+  $PIP install --upgrade cython
+
+  # Build NumPy and SciPy from source against OpenBLAS installed
+  (cd numpy && $PIP install .)
+  (cd scipy && $PIP install .)
+
+  # The rest of the SciPy Stack
+  $PIP install pandas scikit-learn
+  $PIP install matplotlib
+  $PIP install seaborn
+  $PIP install h5py
+  $PIP install yt
+  $PIP install sympy
+  $PIP install patsy
+  $PIP install ggplot
+  $PIP install statsmodels
+  $PIP install git+https://github.com/Theano/Theano.git
+  $PIP install git+https://github.com/Lasagne/Lasagne.git
+  $PIP install bokeh
+
+  # Install additional developer tools
+  $PIP install mock
+  $PIP install pytest
+  $PIP install
+done
+
 cd /
+rm -rf /tmp/build
