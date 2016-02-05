@@ -1,4 +1,4 @@
-FROM bethgelab/docker-jupyter-notebook:cuda7.0-cudnn3
+FROM bethgelab/jupyter-notebook:cuda7.0-cudnn3
 
 MAINTAINER Bethge Lab <opensource@bethgelab.org>
 

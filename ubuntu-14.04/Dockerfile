@@ -1,4 +1,4 @@
-FROM bethgelab/docker-jupyter-notebook:ubuntu-14.04
+FROM bethgelab/jupyter-notebook:ubuntu-14.04
 
 MAINTAINER Bethge Lab <opensource@bethgelab.org>
 
