@@ -21,7 +21,8 @@ curl https://bootstrap.pypa.io/get-pip.py | python3
 apt-get -y remove cython
 # apt-get -y remove numpy
 
-for v in 2 3 do
+for v in 2 3
+do
   PYTHON="python$v"
   PIP="pip$v"
 
