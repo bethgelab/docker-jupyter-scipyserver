@@ -20,16 +20,19 @@ apt-get install -y build-essential python3-dev
 curl https://bootstrap.pypa.io/get-pip.py | python2
 curl https://bootstrap.pypa.io/get-pip.py | python3
 
+apt-get -y remove cython
+
 for PYTHONVER in 2 3 ; do
   PYTHON="python$PYTHONVER"
   PIP="pip$PYTHONVER"
+
+  $PIP install --upgrade cython
 
   # Build NumPy and SciPy from source against OpenBLAS installed
   (cd numpy && $PYTHON setup.py install)
   (cd scipy && $PYTHON setup.py install)
   
   # The rest of the SciPy Stack
-  $PIP install cython
   $PIP install pandas scikit-learn
   $PIP install matplotlib
   $PIP install seaborn
