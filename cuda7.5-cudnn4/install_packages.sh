@@ -4,6 +4,11 @@ set -xe
 
 apt-get -y update
 apt-get build-dep -y python3-matplotlib python3-h5py
+
+# Reduce the image size
+apt-get autoremove -y
+apt-get clean -y
+
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 for PYTHONVER in 2 3 ; do
@@ -11,18 +16,18 @@ for PYTHONVER in 2 3 ; do
   PIP="pip$PYTHONVER"
 
   # The rest of the SciPy Stack
-  $PIP install pandas scikit-learn
-  $PIP install matplotlib
-  $PIP install seaborn
-  $PIP install h5py
-  $PIP install yt
-  $PIP install sympy
-  $PIP install patsy
-  $PIP install ggplot
-  $PIP install statsmodels
-  $PIP install git+https://github.com/Theano/Theano.git
-  $PIP install git+https://github.com/Lasagne/Lasagne.git
-  $PIP install bokeh
-  $PIP install mock
-  $PIP install pytest
+  $PIP install --no-cache-dir pandas scikit-learn
+  $PIP install --no-cache-dir matplotlib
+  $PIP install --no-cache-dir seaborn
+  $PIP install --no-cache-dir h5py
+  $PIP install --no-cache-dir yt
+  $PIP install --no-cache-dir sympy
+  $PIP install --no-cache-dir patsy
+  $PIP install --no-cache-dir ggplot
+  $PIP install --no-cache-dir statsmodels
+  $PIP install --no-cache-dir git+https://github.com/Theano/Theano.git
+  $PIP install --no-cache-dir git+https://github.com/Lasagne/Lasagne.git
+  $PIP install --no-cache-dir bokeh
+  $PIP install --no-cache-dir mock
+  $PIP install --no-cache-dir pytest
 done
