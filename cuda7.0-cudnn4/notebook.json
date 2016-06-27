@@ -1,0 +1,44 @@
+{
+  "kse_rebinds": {
+    "edit": [], 
+    "command": [
+      {
+        "to": "ctrl-c", 
+        "from": "meta-c", 
+        "action_name": "jupyter-notebook:interrupt-kernel"
+      }, 
+      {
+        "to": "ctrl-1", 
+        "from": "meta-1", 
+        "action_name": "jupyter-notebook:change-cell-to-code"
+      }, 
+      {
+        "to": "ctrl-2", 
+        "from": "meta-2", 
+        "action_name": "jupyter-notebook:change-cell-to-markdown"
+      }, 
+      {
+        "to": "ctrl-3", 
+        "from": "meta-3", 
+        "action_name": "jupyter-notebook:change-cell-to-raw"
+      }, 
+      {
+        "to": "ctrl-r", 
+        "action_name": "jupyter-notebook:restart-kernel"
+      }
+    ]
+  }, 
+  "kse_show_rebinds": true, 
+  "load_extensions": {
+    "usability/notify/notify": true, 
+    "usability/ruler/main": true, 
+    "usability/execute_time/ExecuteTime": true, 
+    "publishing/gist_it/main": true, 
+    "usability/toggle_all_line_numbers/main": true, 
+    "config/config_menu/main": true, 
+    "usability/dragdrop/main": true, 
+    "vim_binding/vim_binding": true, 
+    "usability/keyboard_shortcut_editor/main": true
+  }, 
+  "gist_it_personal_access_token": "ebddf7644502cf4966f1a8ab692aceb59de4f245"
+}

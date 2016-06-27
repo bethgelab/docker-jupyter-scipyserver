@@ -1,4 +1,4 @@
-FROM bethgelab/jupyter-scipyserver-base:cuda7.0-cudnn4
+FROM bethgelab/jupyter-scipyserver-base:cuda7.5-cudnn5
 
 MAINTAINER Bethge Lab <opensource@bethgelab.org>
 
