@@ -27,9 +27,6 @@ RUN pip3 install https://github.com/ipython-contrib/IPython-notebook-extensions/
 RUN cd $(jupyter --data-dir)/nbextensions && \
     git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
 
-# copy my personal notebook config notebook config
-COPY notebook.json $JUPYTER_CONFIG_DIR/nbconfig/notebook.json
-
 # make sure all jupyter config and data files are accessible by all users
 RUN chmod -R 777 /jupyter
 
