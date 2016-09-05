@@ -21,7 +21,8 @@ RUN mkdir -p $JUPYTER_DATA_DIR
 RUN mkdir -p $JUPYTER_RUNTIME_DIR
 
 # install a collection of extensions
-RUN pip3 install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip
+RUN pip3 install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master && \
+    jupyter contrib nbextension install --system
 
 # install the vim binding extension
 RUN mkdir -p $(jupyter --data-dir)/nbextensions && cd $(jupyter --data-dir)/nbextensions && \
@@ -29,6 +30,11 @@ RUN mkdir -p $(jupyter --data-dir)/nbextensions && cd $(jupyter --data-dir)/nbex
 
 # make sure all jupyter config and data files are accessible by all users
 RUN chmod -R 777 /jupyter
+
+# jupyter nbextension configurator
+RUN pip2 install jupyter_nbextensions_configurator
+RUN pip3 install jupyter_nbextensions_configurator
+RUN jupyter nbextensions_configurator enable
 
 ## Extremely basic test of install
 RUN python2 -c "import matplotlib, scipy, numpy, pandas, sklearn, seaborn, yt, patsy, sympy, IPython, statsmodels"
