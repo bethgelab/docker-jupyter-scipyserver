@@ -24,7 +24,7 @@ RUN mkdir -p $JUPYTER_RUNTIME_DIR
 RUN pip3 install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip
 
 # install the vim binding extension
-RUN cd $(jupyter --data-dir)/nbextensions && \
+RUN mkdir -p $(jupyter --data-dir)/nbextensions && cd $(jupyter --data-dir)/nbextensions && \
     git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
 
 # make sure all jupyter config and data files are accessible by all users
