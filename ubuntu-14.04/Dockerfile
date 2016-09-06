@@ -28,13 +28,13 @@ RUN pip3 install https://github.com/ipython-contrib/jupyter_contrib_nbextensions
 RUN mkdir -p $(jupyter --data-dir)/nbextensions && cd $(jupyter --data-dir)/nbextensions && \
     git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
 
-# make sure all jupyter config and data files are accessible by all users
-RUN chmod -R 777 /jupyter
-
 # jupyter nbextension configurator
 RUN pip2 install jupyter_nbextensions_configurator
 RUN pip3 install jupyter_nbextensions_configurator
 RUN jupyter nbextensions_configurator enable
+
+# make sure all jupyter config and data files are accessible by all users
+RUN chmod -R 777 /jupyter
 
 ## Extremely basic test of install
 RUN python2 -c "import matplotlib, scipy, numpy, pandas, sklearn, seaborn, yt, patsy, sympy, IPython, statsmodels"
