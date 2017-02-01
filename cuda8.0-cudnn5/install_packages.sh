@@ -33,4 +33,5 @@ for PYTHONVER in 3 2 ; do
   $PIP install --no-cache-dir mock
   $PIP install --no-cache-dir pytest
   $PIP install --no-cache-dir tabulate
+  $PIP install --no-cache-dir --upgrade python-dateutil
 done
